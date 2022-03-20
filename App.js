@@ -4,11 +4,13 @@ import ToDo from './src/screens/ToDo';
 import Done from './src/screens/Done';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
+// import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import { NavigationContainer } from '@react-navigation/native';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 const Tab = createBottomTabNavigator();
 function HomeTabs(){
     return(
+        <NavigationContainer>
         <Tab.Navigator
             screenOptions={
                 ({route}) => ({
@@ -22,7 +24,7 @@ tabBarIcon:({focused, size, color}) => {
         size = focused ? 25:20;
     }
     return(
-        <FontAwesome5
+        <FontIcon
         name={iconName}
         size={size}
         color={color}
@@ -41,6 +43,7 @@ tabBarIcon:({focused, size, color}) => {
         <Tab.Screen name={'ToDo'} components = {ToDo}/>
         <Tab.Screen name={'Done'} components = {Done}/>
         </Tab.Navigator>
+        </NavigationContainer>
     )
 }
 export default function App() {
